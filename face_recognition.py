@@ -19,15 +19,18 @@ c = 0
 for name in all_names:    
     print(name +" loaded")
     
-    x= np.load("data/"+name,allow_pickle=True)
-    all_faces.append(x)
+    if name.endswith(".npy"):
     
-    l = c*np.ones(x.shape[0])
-    all_labels.append(l)
+    
+        x= np.load("data/"+name,allow_pickle=True)
+        all_faces.append(x)
+    
+        l = c*np.ones(x.shape[0])
+        all_labels.append(l)
 
-    if names.get(c) is None:
-        names[c] = name[:-4]
-        c +=1
+        if names.get(c) is None:
+            names[c] = name[:-4]
+            c +=1
 
 
 X = np.concatenate(all_faces, axis = 0)
@@ -65,7 +68,7 @@ def knn(X, y, x_query, k = 5):
 # New Image Capture from WebCam
 cam = cv2.VideoCapture(0)
 
-face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
+face_cascade = cv2.CascadeClassifier("haarcascade.xml")
 
 
 while True:
