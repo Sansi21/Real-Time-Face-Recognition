@@ -4,7 +4,7 @@ import cv2
 
 cam = cv2.VideoCapture(0)
 
-face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
+face_cascade = cv2.CascadeClassifier("haarcascade.xml")
 
 
 my_face_data = []
